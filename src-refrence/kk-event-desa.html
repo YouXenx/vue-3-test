@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Desa Digital</title>
+        <meta name="description" content="The simple way to manage your citizens" />
+        <link href="./output.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logos/logo-icon.png" />
+        <link rel="apple-touch-icon" href="assets/images/logos/logo-icon.png" />
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="The simple way to manage your citizens" />
+        <meta property="og:description" content="The simple way to manage your citizens">
+        <meta property="og:image" content="https://desa-digital.netlify.app/assets/images/logos/logo-icon.png" />
+        <meta property="og:url" content="https://desa-digital.netlify.app" />
+        <meta property="og:type" content="website" />
+    </head>
+    <body>
+        <div class="flex flex-1">
+            <aside id="Sidebar" class="relative flex w-[280px] shrink-0 min-h-screen bg-white border-r border-desa-foreshadow overflow-hidden">
+                <div class="fixed top-0 h-full w-[280px] flex shrink-0 flex-1 z-20 bg-white">
+                    <div class="flex flex-col h-full w-full gap-6 pt-[30px] px-6">
+                        <div class="flex items-center justify-between">
+                            <img src="assets/images/logos/logo-text.svg" class="flex h-[30px] shrink-0" alt="logo" />
+                            <button class="flex size-11 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">
+                                <img src="assets/images/icons/menu-secondary-green.svg" class="size-6" alt="icon" />
+                            </button>
+                        </div>
+                        <div class="flex flex-col flex-1 gap-6 overflow-y-scroll hide-scrollbar">
+                            <nav class="flex flex-col gap-2 pb-12">
+                                <p class="font-medium text-sm text-desa-secondary">Main Menu</p>
+                                <ul>
+                                    <li class="group">
+                                        <a href="kk-dashboard.html" class="flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="assets/images/icons/chart-square-dark-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                                <img src="assets/images/icons/chart-square-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Dashboard </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="group">
+                                        <a href="kk-anggota-keluarga.html" class="flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="assets/images/icons/crown-dark-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                                <img src="assets/images/icons/crown-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Anggota Keluarga </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="accordion group/accordion flex flex-col gap-1 w-full">
+                                    <button data-expand="Bantuan-Sosial-Content" class="group flex w-full shrink-0 items-center h-14 gap-2 rounded-2xl p-4 active">
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="assets/images/icons/bag-2-dark-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                            <img src="assets/images/icons/bag-2-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                        </div>
+                                        <span class="text-left leading-5 text-desa-secondary flex flex-1 group-[.active]:text-desa-dark-green transition-setup"> Bantuan Sosial </span>
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="assets/images/icons/arrow-circle-dark-green-up.svg" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                            <img src="assets/images/icons/arrow-circle-secondary-green-down.svg" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                        </div>
+                                    </button>
+                                    <ul id="Bantuan-Sosial-Content" class="flex flex-col flex-1r pl-[28px]">
+                                        <li class="flex items-center h-[52px] shrink-0 border-l border-desa-background last-of-type:border-0">
+                                            <div class="flex h-full w-[26px] shrink-0 overflow-hidden">
+                                                <img src="assets/images/icons/accodion-line.svg" class="h-full object-contain object-left-top" alt="ornament" />
+                                            </div>
+                                            <a href="kk-bansos.html" class="group flex flex-1 items-center h-[52px] gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow [&.active]:bg-desa-foreshadow transition-setup">
+                                                <span class="text-left leading-5 text-desa-secondary group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> List Bansos </span>
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center h-[52px] shrink-0 border-l border-desa-background last-of-type:border-0">
+                                            <div class="flex h-full w-[26px] shrink-0 overflow-hidden">
+                                                <img src="assets/images/icons/accodion-line.svg" class="h-full object-contain object-left-top" alt="ornament" />
+                                            </div>
+                                            <a href="kk-pengajuan-bansos.html" class="group flex flex-1 items-center h-[52px] gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow [&.active]:bg-desa-foreshadow transition-setup">
+                                                <span class="text-left leading-5 text-desa-secondary group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Pengajuan Bansos </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="accordion group/accordion flex flex-col gap-1 w-full">
+                                    <button data-expand="Jadwal-Desa-Content" class="group flex w-full shrink-0 items-center h-14 gap-2 rounded-2xl p-4 active">
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="assets/images/icons/calendar-2-dark-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                            <img src="assets/images/icons/calendar-2-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                        </div>
+                                        <span class="text-left leading-5 text-desa-secondary flex flex-1 group-[.active]:text-desa-dark-green transition-setup"> Jadwal Desa </span>
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="assets/images/icons/arrow-circle-dark-green-up.svg" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                            <img src="assets/images/icons/arrow-circle-secondary-green-down.svg" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                        </div>
+                                    </button>
+                                    <ul id="Jadwal-Desa-Content" class="flex flex-col flex-1r pl-[28px]">
+                                        <li class="flex items-center h-[52px] shrink-0 border-l border-desa-background last-of-type:border-0">
+                                            <div class="flex h-full w-[26px] shrink-0 overflow-hidden">
+                                                <img src="assets/images/icons/accodion-line.svg" class="h-full object-contain object-left-top" alt="ornament" />
+                                            </div>
+                                            <a href="kk-pembangunan-desa.html" class="group flex flex-1 items-center h-[52px] gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow [&.active]:bg-desa-foreshadow transition-setup">
+                                                <span class="text-left leading-5 text-desa-secondary group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Pembangunan </span>
+                                            </a>
+                                        </li>
+                                        <li class="flex items-center h-[52px] shrink-0 border-l border-desa-background last-of-type:border-0">
+                                            <div class="flex h-full w-[26px] shrink-0 overflow-hidden">
+                                                <img src="assets/images/icons/accodion-line.svg" class="h-full object-contain object-left-top" alt="ornament" />
+                                            </div>
+                                            <a href="kk-event-desa.html" class="group active flex flex-1 items-center h-[52px] gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow [&.active]:bg-desa-foreshadow transition-setup">
+                                                <span class="text-left leading-5 text-desa-secondary group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Events Desa </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <ul>
+                                    <li class="group">
+                                        <a href="kk-dashboard.html" class="flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="assets/images/icons/building-4-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon" />
+                                                <img src="assets/images/icons/building-4-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon" />
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup"> Profile Desa </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="flex items-center justify-between h-[84px] rounded-2xl p-5 mb-4 gap-3 bg-desa-black">
+                                <div class="flex flex-col gap-1">
+                                    <p class="font-semibold leading-5 text-white">Beralih ke Pro</p>
+                                    <a href="#" class="flex items-center font-medium text-sm hover:underline text-desa-soft-green">
+                                        Upgrade Plan
+                                        <img src="assets/images/icons/arrow-right-soft-green.png" class="flex size-3 shrink-0 ml-0.5" alt="icon" />
+                                    </a>
+                                </div>
+                                <img src="assets/images/icons/crown-soft-green-background.svg" class="flex size-11 shrink-0" alt="icon" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div id="Main-Container" class="flex flex-col flex-1">
+                <div id="Top-Bar" class="relative flex h-[116px] shrink-0">
+                    <div class="fixed top-0 flex items-center w-[-webkit-fill-available] h-[116px] py-[30px] px-6 gap-4 bg-white z-30 border-l border-desa-background">
+                        <form action="kk-search-result.html" class="flex w-full">
+                            <label class="group flex w-full items-center rounded-full border border-desa-background py-4 px-6 gap-2 bg-white hover:border-desa-dark-green focus-within:border-desa-dark-green transition-setup">
+                                <button type="submit" class="relative flex size-6 shrink-0">
+                                    <img src="assets/images/icons/search-normal-dark-green.svg" class="absolute flex size-6 shrink-0 opacity-0 group-focus-within:opacity-100 transition-setup" alt="icon" />
+                                    <img src="assets/images/icons/search-normal-secondary-green.svg" class="absolute flex size-6 shrink-0 opacity-100 group-focus-within:opacity-0 transition-setup" alt="icon" />
+                                </button>
+                                <input type="text" class="w-full appearance-none outline-none font-medium leading-5 text-desa-black placeholder:placeholder-shown:text-desa-secondary" placeholder="Cari nama penduduk, pengajuan, events, dll" />
+                            </label>
+                        </form>
+                        <a href="#" class="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">
+                            <img src="assets/images/icons/notification-secondary-green.svg" class="size-6" alt="icon" />
+                        </a>
+                        <a href="#" class="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">
+                            <img src="assets/images/icons/setting-2-secondary-green.svg" class="size-6" alt="icon" />
+                        </a>
+                        <div class="flex items-center gap-4">
+                            <div class="flex size-14 shrink-0 rounded-full overflow-hidden bg-desa-foreshadow">
+                                <img src="assets/images/photos/kk-photo-1.png" class="w-full h-full object-cover" alt="photo" />
+                            </div>
+                            <div class="flex flex-col gap-[6px] w-[120px] shrink-0">
+                                <p class="font-semibold leading-5 w-[120px] truncate">Andi Alif R</p>
+                                <p class="font-medium text-sm text-desa-secondary">Kepala Keluarga</p>
+                            </div>
+                            <a href="index.html" class="flex size-6 shrink-0">
+                                <img src="assets/images/icons/logout-red.svg" class="size-6" alt="logout" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="Content" class="relative flex flex-col flex-1 p-6 gap-6 w-full">
+                    <header>
+                        <h1 class="font-semibold text-2xl leading-[30px]">Events Desa</h1>
+                    </header>
+                    <section id="TabButtons" class="w-full p-1 bg-desa-foreshadow rounded-full grid grid-cols-2 gap-3">
+                        <button type="button" data-content="All" class="tab-btn group active">
+                            <div class="group-[.active]:bg-desa-dark-green group-[.active]:text-white rounded-full py-[18px] flex justify-center items-center text-center text-desa-dark-green font-medium leading-5 transition-all duration-300">
+                                <span>Semua Event</span>
+                            </div>
+                        </button>
+                        <button type="button" data-content="Joined" class="tab-btn group">
+                            <div class="group-[.active]:bg-desa-dark-green group-[.active]:text-white rounded-full py-[18px] flex justify-center items-center text-center text-desa-dark-green font-medium leading-5 transition-all duration-300">
+                                <span>Joined</span>
+                            </div>
+                        </button>
+                    </section>
+                    <div id="Tabs-Content" class="flex flex-col gap-[14px]">
+                        <form id="Page-Search" class="flex items-center justify-between">
+                            <div class="flex flex-col gap-3 w-[370px] shrink-0">
+                                <label class="relative group peer w-full valid">
+                                    <input type="text" placeholder="Cari nama event desa" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 pl-12 pr-6 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                    <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                        <img src="assets/images/icons/calendar-search-secondary-green.svg" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                        <img src="assets/images/icons/calendar-search-black.svg" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="options flex items-center gap-4">
+                                <div class="flex items-center gap-[10px]">
+                                    <span class="font-medium leading-5">Show</span>
+                                    <div class="relative">
+                                        <select name="" id="" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-6 pr-[52px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                            <option value="5" selected>5 Entries</option>
+                                            <option value="10">10 Entries</option>
+                                            <option value="20">20 Entries</option>
+                                            <option value="30">30 Entries</option>
+                                            <option value="40">40 Entries</option>
+                                            <option value="50">50 Entries</option>
+                                        </select>
+                                        <img src="assets/images/icons/arrow-down-black.svg" class="flex size-6 shrink-0 absolute transform -translate-y-1/2 top-1/2 right-6" alt="icon">
+                                    </div>
+                                </div>
+                                <button type="button" class="flex items-center gap-1 h-14 w-fit rounded-2xl border border-desa-background bg-white py-4 px-6">
+                                    <img src="assets/images/icons/filter-black.svg" class="flex size-6 shrink-0" alt="icon">
+                                    <span class="font-medium leading-5">Filter</span>
+                                </button>
+                            </div>
+                        </form>
+                        <div id="All" class="flex flex-col gap-6">
+                            <section id="List-Events" class="flex flex-col gap-4">
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-1.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Belajar HTML Dasar Bersama</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Mon, 24 Feb 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-2.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Dari Desa ke Dunia Digital: Workshop HTML dan AI untuk Pemula</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Sat, 22 Feb 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-3.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Mengenal AI: Menjelajahi Dunia Kecerdasan Buatan dengan Santai</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Fri, 31 Feb 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-4.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Kegiatan Sehat untuk menyambut tahun baru</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Sat, 25 Jan 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-5.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Mengenal Dunia Digital: Pengenalan HTML untuk Pemula</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Fri, 3 Jan 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                            <nav id="Pagination">
+                                <ul class="flex items-center gap-3">
+                                    <li class="group">
+                                        <button type="button" disabled class="group/arrow flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
+                                            <img src="assets/images/icons/arrow-left-dark-green.svg" class="flex size-6 shrink-0 group-hover:hidden group-disabled/arrow:!hidden" alt="icon">
+                                            <img src="assets/images/icons/arrow-left-foreshadow.svg" class="hidden size-6 shrink-0 group-hover:flex group-disabled/arrow:!hidden" alt="icon">
+                                            <img src="assets/images/icons/disabled-arrow-pagination.svg" class="hidden size-6 shrink-0 group-disabled/arrow:!flex" alt="icon">
+                                        </button>
+                                    </li>
+                                    <li class="group active">
+                                        <a class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                                            <span class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup"> 1 </span>
+                                        </a>
+                                    </li>
+                                    <li class="group">
+                                        <a class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                                            <span class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup"> 2 </span>
+                                        </a>
+                                    </li>
+                                    <li class="group">
+                                        <a class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                                            <span class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup"> 3 </span>
+                                        </a>
+                                    </li>
+                                    <li class="group">
+                                        <a class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                                            <span class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup"> 4 </span>
+                                        </a>
+                                    </li>
+                                    <li class="group">
+                                        <a class="flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow group-hover:bg-desa-dark-green group-[.active]:bg-desa-dark-green transition-setup">
+                                            <span class="text-desa-dark-green font-semibold group-[.active]:text-desa-foreshadow group-hover:text-desa-foreshadow transition-setup"> 5 </span>
+                                        </a>
+                                    </li>
+                                    <li class="group">
+                                        <button type="button" class="group/arrow flex size-11 shrink-0 items-center justify-center rounded-full bg-desa-foreshadow disabled:!bg-desa-foreshadow group-hover:bg-desa-dark-green transition-setup">
+                                            <img src="assets/images/icons/arrow-left-dark-green.svg" class="flex size-6 shrink-0 rotate-180 group-hover:hidden group-disabled/arrow:!hidden" alt="icon">
+                                            <img src="assets/images/icons/arrow-left-foreshadow.svg" class="hidden size-6 shrink-0 rotate-180 group-hover:flex group-disabled/arrow:!hidden" alt="icon">
+                                            <img src="assets/images/icons/disabled-arrow-pagination.svg" class="hidden size-6 shrink-0 rotate-180 group-disabled/arrow:!flex" alt="icon">
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div id="Joined" class="flex flex-col gap-6 hidden">
+                            <section id="List-Events" class="flex flex-col gap-4">
+                                <div class="event flex flex-col gap-6 p-6 bg-white rounded-3xl">
+                                    <header class="flex items-center gap-[36px] justify-between">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex justify-center items-center w-[100px] h-[80px] shrink-0 rounded-2xl overflow-hidden">
+                                                <img src="assets/images/thumbnails/kk-event-desa-1.png" alt="image" class="size-full object-cover" />
+                                            </div>
+                                            <div class="title flex flex-col gap-[6px]">
+                                                <h2 class="font-semibold text-lg leading-[22.5px] line-clamp-1">Belajar HTML Dasar Bersama</h2>
+                                                <div class="flex items-center gap-1">
+                                                    <img src="assets/images/icons/ticket-secondary-green.svg" class="size-[18px] shrink-0" alt="icon" />
+                                                    <p class="font-medium text-sm leading-[17.5px] text-desa-secondary">Registration:</p>
+                                                    <p class="font-medium leading-5 text-desa-dark-green">Open</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="kk-event-desa-details-joined.html" class="shrink-0">
+                                            <div class="rounded-2xl bg-desa-black py-[18px] px-6 font-medium leading-5 text-white">View Details</div>
+                                        </a>
+                                    </header>
+                                    <hr class="border-desa-background" />
+                                    <section class="points grid grid-cols-3 gap-4">
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#FF507017] rounded-2xl">
+                                                <img src="assets/images/icons/ticket-2-red.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-red">Rp499.000</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Harga Event</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-[#005CAA17] rounded-2xl">
+                                                <img src="assets/images/icons/profile-2user-blue.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-blue">9.250 Warga</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Total Partisipasi</h3>
+                                            </div>
+                                        </div>
+                                        <div class="point flex items-center gap-3">
+                                            <div class="p-[14px] shrink-0 bg-desa-foreshadow rounded-2xl">
+                                                <img src="assets/images/icons/calendar-2-dark-green.svg" alt="icon" class="size-6 shrink-0" />
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-semibold text-lg leading-[22.5px] text-desa-dark-green">Mon, 24 Feb 2025</p>
+                                                <h3 class="font-medium text-sm leading-[17.5px] text-desa-secondary">Tanggal Pelaksanaan</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="js/accordion.js"></script>
+        <script src="js/tab-content.js"></script>
+    </body>
+</html>
