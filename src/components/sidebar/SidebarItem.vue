@@ -37,12 +37,12 @@ watch(isChildActive, (newVal) => {
         v-if="item.iconActive && item.iconInactive"
       >
         <img
-          src="assets/images/icons/chart-square-dark-green.svg"
+          src="@/assets/images/icons/chart-square-dark-green.svg"
           class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup"
           alt="icon"
         />
         <img
-          src="assets/images/icons/chart-square-secondary-green.svg"
+          src="@/assets/images/icons/chart-square-secondary-green.svg"
           class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup"
           alt="icon"
         />
@@ -67,13 +67,13 @@ watch(isChildActive, (newVal) => {
         <!-- ICON KIRI -->
         <div class="relative flex size-6 shrink-0">
           <img
-            src="assets/images/icons/bag-2-dark-green.svg"
+            src="@/assets/images/icons/bag-2-dark-green.svg"
             class="absolute size-6 opacity-0 transition-setup"
             :class="{ 'opacity-100': isActive }"
             alt="icon"
           />
           <img
-            src="assets/images/icons/bag-2-secondary-green.svg"
+            src="@/assets/images/icons/bag-2-secondary-green.svg"
             class="absolute size-6 opacity-100 transition-setup"
             :class="{ 'opacity-0': isActive }"
             alt="icon"
@@ -91,13 +91,13 @@ watch(isChildActive, (newVal) => {
         <!-- ICON KANAN -->
         <div class="relative flex size-6 shrink-0">
           <img
-            src="assets/images/icons/arrow-circle-dark-green-up.svg"
+            src="@/assets/images/icons/arrow-circle-dark-green-up.svg"
             class="absolute size-6 opacity-0 transition-setup"
             :class="{ 'opacity-100': isActive }"
             alt="icon"
           />
           <img
-            src="assets/images/icons/arrow-circle-secondary-green-down.svg"
+            src="@/assets/images/icons/arrow-circle-secondary-green-down.svg"
             class="absolute size-6 opacity-100 transition-setup"
             :class="{ 'opacity-0': isActive }"
             alt="icon"
