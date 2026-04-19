@@ -4,16 +4,15 @@ import Topbar from "@/components/Topbar.vue";
 </script>
 
 <template>
-  <div class="flex flex-1">
+  <div class="flex min-h-screen w-full">
+    <!-- SIDEBAR -->
     <Sidebar />
 
-    <div id="Main-Container" class="flex flex-col flex-1">
+    <!-- MAIN -->
+    <div class="flex flex-col flex-1 ml-[280px]">
       <Topbar />
 
-      <div
-        id="Content"
-        class="relative flex flex-col flex-1 gap-[14px] p-6 pb-[30px] w-full shrink-0"
-      ></div>
+      <router-view />
     </div>
   </div>
 </template>
