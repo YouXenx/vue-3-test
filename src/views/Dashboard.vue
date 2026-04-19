@@ -1,15 +1,42 @@
 <script setup>
 import { useDashboardStore } from "@/stores/dashboard";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, nextTick } from "vue";
+import Chart, { scales } from "chart.js/auto";
 
 const dashboardStore = useDashboardStore();
 const { dashboardData, loading } = storeToRefs(dashboardStore);
 
-onMounted(() => {
-  console.log("FETCH DASHBOARD DIPANGGIL");
-  dashboardStore.fetchDashboardData();
+onMounted(async () => {
+  await dashboardStore.fetchDashboardData();
+  await nextTick(); // pastikan DOM sudah render
+  getResidentStatistic();
 });
+
+const getResidentStatistic = () => {
+  const chart = document.getElementById("myChart");
+
+  new Chart(chart, {
+    type: "doughnut",
+    data: {
+      labels: ["A", "B", "C", "D"], // wajib kalau mau rapi
+      datasets: [
+        {
+          data: [114210, 97200, 24300, 7290],
+          backgroundColor: ["#34613A", "#8EBD55", "#FA7139", "#FBAD48"],
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      cutout: "69%", // ini posisi yang benar (bukan di datasets)
+    },
+  });
+};
 </script>
 
 <template>
@@ -61,7 +88,7 @@ onMounted(() => {
         </div>
         <div class="flex flex-col gap-[6px]">
           <p class="font-semibold text-[32px] leading-10">
-            {{ dashboardData?.development ?? 0 }}
+            {{ dashboardData?.residents ?? 0 }}
           </p>
           <div class="flex items-center gap-0.5">
             <img
@@ -86,7 +113,9 @@ onMounted(() => {
           />
         </div>
         <div class="flex flex-col gap-[6px]">
-          <p class="font-semibold text-[32px] leading-10">42.000</p>
+          <p class="font-semibold text-[32px] leading-10">
+            {{ dashboardData?.development ?? 0 }}
+          </p>
           <div class="flex items-center gap-0.5">
             <img
               src="@/assets/images/icons/trend-up-dark-green-fill.svg"
@@ -136,7 +165,9 @@ onMounted(() => {
           />
         </div>
         <div class="flex flex-col gap-[6px]">
-          <p class="font-semibold text-[32px] leading-10">12</p>
+          <p class="font-semibold text-[32px] leading-10">
+            {{ dashboardData?.events ?? 0 }}
+          </p>
           <div class="flex items-center gap-0.5">
             <img
               src="@/assets/images/icons/trend-up-dark-green-fill.svg"
@@ -167,7 +198,9 @@ onMounted(() => {
           />
         </div>
         <div class="flex flex-col gap-[6px]">
-          <p class="font-semibold text-[32px] leading-10">192</p>
+          <p class="font-semibold text-[32px] leading-10">
+            {{ dashboardData?.social_assistances ?? 0 }}
+          </p>
           <div class="flex items-center gap-0.5">
             <img
               src="@/assets/images/icons/trend-up-dark-green-fill.svg"
