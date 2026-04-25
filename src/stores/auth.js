@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import Cookies from "js-cookie";
-import api from "@/utils/api";
+import axios from "axios";
+import router from "@/router";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
@@ -24,9 +25,8 @@ export const useAuthStore = defineStore("auth", {
       this.success = null;
 
       try {
-        const { data } = await api.post("/login", credentials);
+        const { data } = await axios.post("/login", credentials);
 
-        // 🔥 FIX STRUKTUR RESPONSE
         const token = data?.data?.token;
         const user = data?.data?.user;
 
@@ -39,13 +39,11 @@ export const useAuthStore = defineStore("auth", {
 
         Cookies.set("token", token, {
           expires: 7,
-          secure: false,
         });
 
         this.success = "Login berhasil";
         return true;
       } catch (err) {
-        // 🔥 VALIDATION ERROR LARAVEL
         if (err.response?.status === 422) {
           this.error = err.response.data.errors;
         } else if (err.response?.status === 401) {
@@ -77,8 +75,10 @@ export const useAuthStore = defineStore("auth", {
       this.token = token;
 
       try {
-        const { data } = await api.get("/me");
-        this.user = data;
+        const { data } = await axios.get("/me");
+
+        this.user = data?.data;
+
         return true;
       } catch (err) {
         this.logout();
@@ -86,14 +86,27 @@ export const useAuthStore = defineStore("auth", {
       }
     },
 
-    // 🚪 LOGOUT
-    logout() {
-      this.user = null;
-      this.token = null;
-      this.error = null;
-      this.success = null;
+    async logout() {
+      this.loading = true;
 
-      Cookies.remove("token");
+      try {
+        await axios.post("/logout");
+
+        Cookies.remove("token");
+
+        this.user = null;
+        this.token = null;
+        this.error = null;
+
+        this.success = "Logout successful";
+
+        router.push({ name: "login" });
+      } catch (error) {
+        this.error =
+          error.response?.data?.message || error.message || "Logout gagal";
+      } finally {
+        this.loading = false;
+      }
     },
   },
 });

@@ -14,17 +14,25 @@ const authStore = useAuthStore();
 const { loading, error } = storeToRefs(authStore);
 const { login } = authStore;
 
+import { useRouter } from "vue-router";
+const router = useRouter();
+
 const form = ref({
   email: "",
   password: "",
 });
 
 const handleSubmit = async () => {
-  await login(form.value);
+  const success = await login(form.value); // 🔥 ambil return true/false
 
-  if (error.value === "Unauthorized") {
+  if (success) {
+    router.push({ name: "dashboard" }); // ✅ redirect
+  } else {
     form.value.password = "";
-    alert("Email atau password salah");
+
+    if (error.value?.general) {
+      alert(error.value.general);
+    }
   }
 };
 </script>
