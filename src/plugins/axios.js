@@ -1,6 +1,8 @@
-import axios from "axios";
+// src/plugins/axios.js
 
-// Base URL API (ganti sesuai backend kamu)
+import axios from "axios";
+import Cookies from "js-cookie";
+
 const api = axios.create({
   baseURL: "http://localhost:8000/api",
   headers: {
@@ -9,10 +11,12 @@ const api = axios.create({
   timeout: 10000,
 });
 
-// Request interceptor (optional: untuk token login nanti)
+// 🔐 REQUEST INTERCEPTOR
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
+
+    console.log("TOKEN KE API:", token); // debug
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -20,20 +24,18 @@ api.interceptors.request.use(
 
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  },
+  (error) => Promise.reject(error),
 );
 
-// Response interceptor (handle global error)
+// 🌍 RESPONSE INTERCEPTOR
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response) {
-      // contoh: unauthorized
-      if (error.response.status === 401) {
-        console.log("Unauthorized - redirect login nanti");
-      }
+    if (error.response?.status === 401) {
+      console.log("❌ Unauthorized - redirect ke login");
+
+      Cookies.remove("token");
+      window.location.href = "/login";
     }
 
     return Promise.reject(error);

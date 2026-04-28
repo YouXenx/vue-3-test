@@ -1,16 +1,13 @@
 // src/helpers/error.js
 
 export function getErrorMessage(error) {
-  // Jika error dari server (Axios)
   if (error.response) {
     const status = error.response.status;
 
-    // Backend kirim message
     if (error.response.data?.message) {
       return error.response.data.message;
     }
 
-    // fallback berdasarkan status code
     switch (status) {
       case 400:
         return "Bad Request";
