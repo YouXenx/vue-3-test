@@ -3,7 +3,9 @@ import { useAuthStore } from "@/stores/auth";
 import Cookies from "js-cookie";
 
 import Dashboard from "../views/Dashboard.vue";
-import HeadOfFamily from "../views/head-of-family/HeadOfFamilies.vue";
+import HeadOfFamilies from "../views/head-of-family/HeadOfFamilies.vue";
+import HeadOfFamiliy from "../views/head-of-family/HeadOfFamily.vue";
+import HeadOfFamiliyCreate from "../views/head-of-family/HeadOfFamilyCreate.vue";
 
 import Login from "../views/Login.vue";
 import Main from "@/layouts/Main.vue";
@@ -12,26 +14,52 @@ const routes = [
   {
     path: "/",
     component: Main,
-    meta: { requiresAuth: true },
     children: [
       {
-        path: "/",
+        path: "",
         name: "dashboard",
         component: Dashboard,
+        meta: {
+          requiresAuth: true,
+          permissions: ["dashboard-menu"],
+        },
       },
       {
         path: "head-of-family",
         name: "head-of-family",
-        component: HeadOfFamily,
+        component: HeadOfFamilies,
+        meta: {
+          requiresAuth: true,
+          permissions: ["head-of-family-list"],
+        },
+      },
+      {
+        path: "head-of-family/:id",
+        name: "manage-head-of-family",
+        component: HeadOfFamiliy,
+        meta: {
+          requiresAuth: true,
+          permissions: ["head-of-family-list"],
+        },
+      },
+      {
+        path: "head-of-family/create",
+        name: "create-head-of-family",
+        component: HeadOfFamiliyCreate,
+        meta: {
+          requiresAuth: true,
+          permissions: ["head-of-family-list"],
+        },
       },
     ],
   },
-
   {
     path: "/login",
     name: "login",
     component: Login,
-    meta: { requiresUnAuth: true },
+    meta: {
+      requiresUnAuth: true,
+    },
   },
 ];
 
@@ -43,13 +71,7 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   const auth = useAuthStore();
 
-  console.log("=== AUTH DEBUG ===");
-  console.log("TOKEN STORE:", auth.token);
-  console.log("COOKIE:", Cookies.get("token"));
-  console.log("==================");
-
   const token = Cookies.get("token");
-
   auth.token = token || null;
 
   if (auth.token && !auth.user) {
@@ -58,23 +80,35 @@ router.beforeEach(async (to) => {
     } catch (err) {
       auth.logout();
       Cookies.remove("token");
-
-      console.log("❌ CHECK AUTH FAILED → REDIRECT LOGIN");
       return { name: "login" };
     }
   }
 
   if (to.meta.requiresAuth && !auth.token) {
-    console.log("❌ NO TOKEN → REDIRECT LOGIN");
     return { name: "login" };
   }
 
   if (to.meta.requiresUnAuth && auth.token) {
-    console.log("❌ ALREADY LOGGED IN → REDIRECT DASHBOARD");
     return { name: "dashboard" };
   }
 
-  console.log("✅ ROUTE ALLOWED:", to.name);
+  if (to.meta.permissions?.length) {
+    if (!auth.user) {
+      return { name: "login" };
+    }
+
+    const userPermissions = Array.isArray(auth.user.permissions)
+      ? auth.user.permissions
+      : [];
+
+    const hasPermission = to.meta.permissions.every((perm) =>
+      userPermissions.includes(perm),
+    );
+
+    if (!hasPermission) {
+      return { name: "dashboard" };
+    }
+  }
 
   return true;
 });
